@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load staticfiles %}
+
+<body>
+        
+    <section class="signup">
+        <div>
+            <h1 style="color:white; text-align: center; font-size:50px;">당신은?</h1>        
+            <br><br>
+            <a href="{%url 'childSignup'%} " class="btn-orange">아이</a>
+            <a href="{%url 'parentSignup'%} " class="btn-blue">부모</a>
+        </div>
+    </section>    
+    
+</body>
+
+
+{%endblock%}

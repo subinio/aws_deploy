@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load staticfiles %}
+
+  <body>
+    <section class="login">
+      <h1 style="color:white; text-align: center; font-size:50px;">LOGIN</h1>
+      <form action="{% url 'loginParent' %}" name="login_form" method="post" class = "login_form">   
+        <div class = "login_input">
+          <div style="text-align:center">
+            
+            
+            </div>
+          <br>
+          <div class="id_pw">
+              {% csrf_token %}
+              <div class="fieldlabel">ID : </div>
+              <div><input type="text" id="Name" name="Name" placeholder="Name" maxlength="15" value=""></div>
+              <br>
+               <div class="fieldlabel">PASSWORD : </div>
+            <div><input type="password" id="PW" name="PW" placeholder="password" maxlength="15" autocomplete="off"></div>
+            <br>
+          </div>
+        </div>    
+
+        <div class="btnfield">
+            <input type="submit" value="LOGIN">
+        </div>
+
+      </form>   
+    </section>    
+  </body>
+
+
+{%endblock%}

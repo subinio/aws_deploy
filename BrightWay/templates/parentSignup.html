@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load staticfiles %}
+
+
+
+
+<body>     
+    <section class="parent_signup">
+        <h1 style="color:white; text-align: center; font-size:50px;">SIGN UP</h1>
+
+        
+        <form action="{% url 'parentSignup' %}" name="signup_form" method="POST" class = "signup_form"> 
+            <div class = "signup_input">
+                    {% if error %}
+                    <h1 style="color:red; text-align: center; font-size:20px;">{{ error }}</h1> 
+                    <br>
+                    <br>
+                    {% endif %}
+                <div class="id_pw">
+                    {% csrf_token %}
+                    <div class="fieldlabel">이름 : </div>
+                    <div><input type="text" id="parentName" name="parentName" placeholder="name" maxlength="15" value=""></div>
+                    <br>
+                    <div class="fieldlabel">아이디 : </div>
+                    <div><input type="text" id="parentID" name="parentID" placeholder="ID" maxlength="15" value=""></div>
+                    <br>
+                    <div class="fieldlabel">패스워드 : </div>
+                    <div><input type="password" id="parentPW" name="parentPW" placeholder="password" maxlength="15" autocomplete="off"></div>
+                    <br>
+                    <div style="text-align:center;">
+                        아이부터 회원 가입이 되어있어야 합니다. <br>
+                        --- <a href="{% url 'childSignup' %}">아이 회원가입 하러가기</a> ---
+                    </div>
+                    <br><br>
+                    <div class="fieldlabel">아이 이름 : </div>
+                    <div><input type="text" id="childName" name="childName" placeholder="child name" maxlength="15" value=""></div>
+                    <br>
+                    <div class="fieldlabel">아이 아이디 : </div>
+                    <div><input type="text" id="childID" name="childID" placeholder="child ID" maxlength="15" value=""></div>   
+                </div>  
+            </div>  
+            <div class="btnfield">
+                <input type="submit" value="회원가입">
+            </div>
+        </form>
+    </section>
+
+</body>
+
+
+{%endblock%}

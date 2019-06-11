@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load staticfiles %}
+
+<body>
+    <section class="child_signup">
+        <h1 style="color:white; text-align: center; font-size:50px;">SIGN UP</h1>
+        <form method = "POST" action="{% url 'childSignup' %}" name="signup_form" class = "signup_form"> 
+            <div class = "signup_input">
+                <div class="id_pw">
+                    {% csrf_token %}
+                    <div class="fieldlabel">이름 : </div>
+                    <div><input type="text" id="childName" name="childName" placeholder="name" maxlength="15" value=""></div>
+                    <br>
+                    <div class="fieldlabel">아이디 : </div>
+                    <div><input type="text" id="childID" name="childID" placeholder="ID" maxlength="15" value=""></div>
+                    <br>
+                    <div class="fieldlabel">패스워드 : </div>
+                    <div><input type="password" id="childPW" name="childPW" placeholder="password" maxlength="15" autocomplete="off"></div>
+                    <br>
+                    
+                </div>
+            </div>    
+                
+            <div class="btnfield">
+                <input type="submit" value="회원가입">
+            </div>
+        
+        </form>
+
+    </section>
+
+</body>
+
+
+{%endblock%}

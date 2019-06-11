@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load staticfiles %}
+
+<body>     
+    <section class="child_mypage">
+        <h1 style="color:white; text-align: center; font-size:50px;">MY PAGE</h1>
+        
+            <div class = "mypage_input">
+                <div class="fieldlabel">ID : </div>
+
+                    {% for cuser in childUser.all %}
+                    {% if user.get_username == cuser.UserID %}
+                    {{cuser.UserID}}
+                    {% endif %}
+                    {% endfor %}
+                
+                <br>
+                <br>
+                
+                <div class="fieldlabel">NAME :</div>
+                    {% for cuser in childUser.all %}
+                    {% if user.get_username == cuser.UserID %}
+                    {{cuser.UserName}}
+                    {% endif %}
+                    {% endfor %}
+                
+<!--
+                <br><br>
+                <div style="text-align:center;">
+                    --- 고정할 위치를 설정하세요 ---
+                </div>
+                <br>
+                
+                <form action="#" name="L1" method="post" class = "L1">
+                    <div class="fieldlabel">위치1 : </div>
+                    <select id="L1_address_1" name="L1_address_1">
+                        <option value="Seoul" selected>서울특별시</option>
+                    </select>
+                    <select id="L1_address_2" name="L1_address_2">
+                        <option value="Gwangjin" selected>광진구</option>
+                    </select>
+                    <select id="L1_address_3" name="L1_address_3">
+                            <option value="G1" selected>중곡동</option>
+                            <option value="G2">능동</option>
+                            <option value="G3">구의동</option>
+                            <option value="G4">광장동</option>
+                            <option value="G5">자양동</option>
+                            <option value="G6">화양동</option>
+                            <option value="G7">군자동</option>
+                            <option value="G8">중곡1동</option>
+                            <option value="G9">중곡2동</option>
+                            <option value="G10">중곡3동</option>
+                            <option value="G11">중곡4동</option>
+                            <option value="G12">자양1동</option>
+                            <option value="G13">자양2동</option>
+                            <option value="G14">자양3동</option>
+                            <option value="G15">자양4동</option>
+                            <option value="G16">구의1동</option>
+                            <option value="G17">구의2동</option>
+                            <option value="G18">구의3동</option>
+                    </select>
+                    <span class="btnfield">
+                        <input type="submit" value="수정하기">
+                    </span>
+                </form>
+                <br><br>
+                
+                <form action="#" name="L2" method="post" class = "L2">
+                    <div class="fieldlabel">위치2 : </div>
+                    <select id="L2_address_1" name="L2_address_1">
+                        <option value="Seoul" selected>서울특별시</option>
+                    </select>
+                    <select id="L2_address_2" name="L2_address_2">
+                        <option value="Gwangjin" selected>광진구</option>
+                    </select>
+                    <select id="L2_address_3" name="L2_address_3">
+                        <option value="G1" selected>중곡동</option>
+                        <option value="G2">능동</option>
+                        <option value="G3">구의동</option>
+                        <option value="G4">광장동</option>
+                        <option value="G5">자양동</option>
+                        <option value="G6">화양동</option>
+                        <option value="G7">군자동</option>
+                        <option value="G8">중곡1동</option>
+                        <option value="G9">중곡2동</option>
+                        <option value="G10">중곡3동</option>
+                        <option value="G11">중곡4동</option>
+                        <option value="G12">자양1동</option>
+                        <option value="G13">자양2동</option>
+                        <option value="G14">자양3동</option>
+                        <option value="G15">자양4동</option>
+                        <option value="G16">구의1동</option>
+                        <option value="G17">구의2동</option>
+                        <option value="G18">구의3동</option>
+                    </select>
+                    <span class="btnfield">
+                        <input type="submit" value="수정하기">
+                    </span>
+                </form>
+
+                <br><br>
+
+                <form action="#" name="L3" method="post" class = "L3">
+                    <div class="fieldlabel">위치3 : </div>
+                    <select id="L3_address_1" name="L3_address_1">
+                        <option value="Seoul" selected>서울특별시</option>
+                    </select>
+                    <select id="L3_address_2" name="L3_address_2">
+                        <option value="Gwangjin" selected>광진구</option>
+                    </select>
+                    <select id="L3_address_3" name="L3_address_3">
+                        <option value="능동" selected>능동</option>
+                        <option value="광장동">광장동</option>
+                        <option value="화양동">화양동</option>
+                        <option value="군자동">군자동</option>
+                        <option value="중곡1동">중곡1동</option>
+                        <option value="중곡2동">중곡2동</option>
+                        <option value="중곡3동">중곡3동</option>
+                        <option value="중곡4동">중곡4동</option>
+                        <option value="자양1동">자양1동</option>
+                        <option value="자양2동">자양2동</option>
+                        <option value="자양3동">자양3동</option>
+                        <option value="자양4동">자양4동</option>
+                        <option value="구의1동">구의1동</option>
+                        <option value="구의2동">구의2동</option>
+                        <option value="구의3동">구의3동</option>
+                    </select>
+                    <span class="btnfield">
+                        <input type="submit" value="수정하기">
+                    </span>
+                </form>
+                <br><br>
+            </div>  
+-->
+    </section>
+</body>
+
+
+{%endblock%}

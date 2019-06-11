@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load staticfiles %}
+
+<body>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d246d04290f7ea32fecab48255850ab0"></script>
+        <script>
+        function changeSelect(){
+                var selected = document.getElementById("address3");
+
+                selected.options[selected.selectedIndex].selected= true;
+            }
+            </script>
+        <div id="map" style="width:1500px;height:500px; border-radius: 50px; margin: 0 auto;"></div>
+
+        <br><br>
+        <form action="{% url 'map' %}" name="point" method="POST" class="point" style="text-align: center;">
+            {% csrf_token %}
+                동네를 설정하세요 : 
+                <select id="address1" name="address1">
+                    <option value="Seoul" selected>서울특별시</option>
+                </select>
+                <select id="address2" name="address2">
+                    <option value="Gwangjin" selected>광진구</option>
+                </select>
+                <select id="address3" name="address3">
+                        <option value="">동선택</option>
+                        <option value="능동">능동</option>
+                        <option value="광장동">광장동</option>
+                        <option value="화양동">화양동</option>
+                        <option value="군자동">군자동</option>
+                        <option value="중곡1동">중곡1동</option>
+                        <option value="중곡2동">중곡2동</option>
+                        <option value="중곡3동">중곡3동</option>
+                        <option value="중곡4동">중곡4동</option>
+                        <option value="자양1동">자양1동</option>
+                        <option value="자양2동">자양2동</option>
+                        <option value="자양3동">자양3동</option>
+                        <option value="자양4동">자양4동</option>
+                        <option value="구의1동">구의1동</option>
+                        <option value="구의2동">구의2동</option>
+                        <option value="구의3동">구의3동</option>
+                </select>
+                <br><br>
+                시간을 설정하세요 : 
+                <select id="time" name="time">
+                    <option value="" >시간선택</option>
+                    <option type = "number"value="22">오후 10시</option>
+                    <option type = "number"value="23">오후 11시</option>
+                    <option type = "number"value="24">오전 12시</option>
+                    <option type = "number"value="25">오전 1시</option>
+                    <option type = "number"value="26">오전 2시</option>
+                    <option type = "number"value="27">오전 3시</option>
+                </select>
+                <br><br>
+
+                <span class="btnfield">
+                    <input type="submit" value="search" onclick="changeSelect()">
+                </span>
+                
+        </form>
+       
+        {% for a in Css.all %}  
+        {% if address == a.distinct %}
+        
+        <div class = "container" style="text-align: center;">
+
+            <input type='hidden' name='pos1X' value={{a.x}}>
+            <input type='hidden' name='pos1Y' value={{a.y}}>
+            
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        {% for b in Fss.all %}  
+        {% if address == b.distinct %}
+        {% if b.time >= time_point %}
+        <div class = "container" style="text-align: center;">
+
+            <input type='hidden' name='pos2X' value={{b.x}}>
+            <input type='hidden' name='pos2Y' value={{b.y}}>
+        
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+  
+        {% for c in Oss.all %}  
+        {% if address == c.distinct %}
+        
+        <div class = "container" style="text-align: center;">
+
+            <input type='hidden' name='pos3X' value={{c.x}}>
+            <input type='hidden' name='pos3Y' value={{c.y}}>
+            
+        </div>
+        {% endif %}
+        {% endfor %}
+
+
+        <input type="hidden" id="cnt1" name="variable1" value={{cnt}}>
+        <input type="hidden" id="cnt2" name="variable2" value={{cnt2}}>
+        <input type="hidden" id="cnt3" name="variable3" value={{cnt3}}>
+
+
+
+        {% for d in Dongs.all %} 
+        {% if d.distinct == address %}
+        <input type="hidden" id="x" name="x" value={{d.x}}>
+        <input type="hidden" id="y" name="y" value={{d.y}}>
+        {% endif %}
+        {% endfor %}
+
+
+
+        <script type="text/javascript">
+           //초기 맵 생성//
+           var container = document.getElementById('map');
+           var options = {
+              center: new daum.maps.LatLng(37.5502596,127.0709503),
+              level: 4
+           };
+           var map = new daum.maps.Map(container, options);
+
+           //동 이동 후 맵 생성//
+           var container = document.getElementById('map');
+           var options = {
+              center: new daum.maps.LatLng(document.getElementById("x").value,document.getElementById("y").value),
+              level: 4
+           };
+     
+           var map = new daum.maps.Map(container, options);
+
+           var x1 = new Array();
+           var y1 = new Array();
+           var x2 = new Array();
+           var y2 = new Array();
+           var x3 = new Array();
+           var y3 = new Array();
+           var i;
+
+           for(i=0; i<document.getElementById("cnt1").value; i++){
+                x1.push(document.getElementsByName("pos1X")[i].value);
+                y1.push(document.getElementsByName("pos1Y")[i].value);
+           }
+           for(i=0; i<document.getElementById("cnt2").value; i++){
+                x2.push(document.getElementsByName("pos2X")[i].value);
+                y2.push(document.getElementsByName("pos2Y")[i].value);
+           }
+           for(i=0; i<document.getElementById("cnt3").value; i++){
+                x3.push(document.getElementsByName("pos3X")[i].value);
+                y3.push(document.getElementsByName("pos3Y")[i].value);
+           }
+           var i;
+
+           for(i=0; i<document.getElementById("cnt1").value; i++){
+                
+                var circle = new daum.maps.Circle({
+                    center : new daum.maps.LatLng(x1[i],y1[i]),  // 원의 중심좌표 입니다 
+                    radius: 8, // 미터 단위의 원의 반지름입니다 
+                    strokeWeight: 5, // 선의 두께입니다 
+                    strokeColor: '#2204e5', // 선의 색깔입니다
+                    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'solid', // 선의 스타일 입니다
+                    fillColor: '#2204e5', // 채우기 색깔입니다
+                    fillOpacity: 1  // 채우기 불투명도 입니다   
+            }); 
+            circle.setMap(map);
+           }
+
+           var i;
+           for(i=0; i<document.getElementById("cnt2").value; i++){
+                
+            var circle = new daum.maps.Circle({
+                    center : new daum.maps.LatLng(x2[i],y2[i]),  // 원의 중심좌표 입니다 
+                    radius: 8, // 미터 단위의 원의 반지름입니다 
+                    strokeWeight: 5, // 선의 두께입니다 
+                    strokeColor: '#f940d4', // 선의 색깔입니다
+                    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'solid', // 선의 스타일 입니다
+                    fillColor: '#f940d4', // 채우기 색깔입니다
+                    fillOpacity: 1  // 채우기 불투명도 입니다
+            }); 
+            circle.setMap(map);
+           }
+            var i;
+           for(i=0; i<document.getElementById("cnt3").value; i++){
+                
+            var circle = new daum.maps.Circle({
+                    center : new daum.maps.LatLng(x3[i],y3[i]),  // 원의 중심좌표 입니다 
+                    radius: 8, // 미터 단위의 원의 반지름입니다 
+                    strokeWeight: 5, // 선의 두께입니다 
+                    strokeColor: '#e5191c', // 선의 색깔입니다
+                    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'solid', // 선의 스타일 입니다
+                    fillColor: '#e5191c', // 채우기 색깔입니다
+                    fillOpacity: 1  // 채우기 불투명도 입니다   
+            }); 
+            circle.setMap(map);
+           }
+           
+        </script>
+
+
+
+</body>
+
+{%endblock%}

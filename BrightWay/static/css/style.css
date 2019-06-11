@@ -1,0 +1,307 @@
+body{
+    background: url('../homebg.png'); 
+    font-family: "Delius Unicase";
+    font-weight: normal;
+    color:white;
+}
+
+body a{
+    text-decoration: none;
+}
+
+section{
+    clear: both;
+}
+
+/*nav-bar*/
+.navbar{
+    background-color: transparent;
+    margin-top: 20px;
+}
+
+.navbar-brand{
+    color:white;
+    font-weight: bold;
+    font-size: 25px;
+    display: block;
+    width: 50%;
+    float:left;
+    margin: 0px 20px;
+}
+
+.align-left{
+    float:right;
+    margin: 0px 20px;
+    padding: 0px;
+    
+}
+.nav-item{
+    list-style: none;
+    float: left;
+    margin: 0px 20px;
+    padding: 0;
+}
+
+.nav-link{
+    color:white;
+    display:block;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link:hover{
+    color: #4466C9;
+}
+
+
+/*buttons*/
+.btn-orange{
+    color: white;
+    padding: 20px 60px;
+    border-radius: 5px;
+    background-color: #FC6A3E;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.btn-blue{
+    color: white;
+    padding: 20px 60px;
+    border-radius: 5px;
+    background-color: #4466C9;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.btn-orange:hover{
+    text-decoration: none;
+    color: #FC6A3E;
+    background-color: white;
+}
+
+.btn-blue:hover{
+    text-decoration: none;
+    color: #4466C9;
+    background-color: white;
+}
+
+/* home.html */
+.home_title{
+    font-size: 80px;
+    text-align: left;
+    color: white;
+}
+.home_explain{
+    color: white;
+}
+
+.home_button{
+    margin-top: 20px;
+}
+
+.home_text{
+    float: left;
+    margin-top: 15%;
+    width: 570px;
+}
+
+.phone_image{
+    float: right;
+}
+
+.home{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 80px;
+    clear: both;
+}
+
+/*login.html*/
+.login{
+    margin-top: 10%;
+}
+
+.fieldlabel{
+    float:left;
+    width:120px;
+    text-align:right;
+    padding-right:10px;
+}
+
+.id_pw input{
+    border: 1px solid white;
+    width: 200;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.id_pw{
+    width: 400px;
+    margin: 0 auto;
+}
+
+.login .btnfield{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.login .btnfield input{
+    color: white;
+    background-color: #FC6A3E;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #FC6A3E;
+    border-radius: 5px;
+    padding: 20px 60px;
+}
+
+
+/*signup.html*/
+.signup{
+    margin-top: 10%;
+    text-align: center;
+}
+
+/*childSignup.html*/
+.child_signup{
+    margin-top: 10%;
+}
+
+.fieldlabel{
+    float:left;
+    width:120px;
+    text-align:right;
+    padding-right:10px;
+}
+
+.id_pw input{
+    border: 1px solid white;
+    width: 200;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.id_pw{
+    width: 400px;
+    margin: 0 auto;
+}
+
+.child_signup .btnfield{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.child_signup .btnfield input{
+    color: white;
+    background-color: #4466C9;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #4466C9;
+    border-radius: 5px;
+    padding: 20px 60px;
+}
+
+/*parentSignup.html*/
+.parent_signup{
+    margin-top: 10%;
+}
+
+.fieldlabel{
+    float:left;
+    width:120px;
+    text-align:right;
+    padding-right:10px;
+}
+
+.id_pw input{
+    border: 1px solid white;
+    width: 200;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.id_pw{
+    width: 400px;
+    margin: 0 auto;
+}
+
+.parent_signup .btnfield{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.parent_signup .btnfield input{
+    color: white;
+    background-color: #4466C9;
+    font-size: 20px; 
+    font-weight: bold;
+    border: 1px solid #4466C9;
+    border-radius: 5px;
+    padding: 20px 60px;
+}
+
+/*parentMypage.html
+  childMypage.html*/
+.parent_mypage,
+.child_mypage{
+    margin-top: 10%;
+}
+
+.fieldlabel{
+    float:left;
+    width:120px;
+    text-align:right;
+    padding-right:10px;
+}
+
+.mypage_input input{
+    border: 1px solid white;
+    width: 180;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.mypage_input{
+    width: 500px;
+    margin: 0 auto;
+}
+
+.parent_mypage .btnfield,
+.child_mypage .btnfield{
+    text-align: center;
+}
+
+.parent_mypage .btnfield input,
+.child_mypage .btnfield input{
+    color: white;
+    background-color: #4466C9;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid #4466C9;
+    border-radius: 5px;
+    width: 80;
+}
+
+
+/* map.html */
+.point select{
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.point .btnfield{
+    text-align: center;
+}
+
+.point .btnfield input{
+    color: white;
+    background-color: #4466C9;
+    font-size: 15px;
+    font-weight: bold;
+    border: 1px solid #4466C9;
+    border-radius: 5px;
+    width: 80;
+}

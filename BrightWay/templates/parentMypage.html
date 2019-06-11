@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load staticfiles %}
+
+<body>    
+
+    <section class="parent_mypage">
+        
+        <h1 style="color:white; text-align: center; font-size:50px;">MY PAGE</h1>
+            <div class = "mypage_input">
+                <div class="fieldlabel">ID : </div>
+                
+                    {% for puser in parentUser.all %}
+                    {% if user.get_username == puser.UserID %}
+                    {{puser.UserID}}
+                    {% endif %}
+                    {% endfor %}
+                    <br>
+                    <br>
+                    
+                    <div class="fieldlabel">NAME : </div>
+                    {% for puser in parentUser.all %}
+                    {% if user.get_username == puser.UserID %}
+                    {{puser.UserName}}
+                    {% endif %}
+                    {% endfor %}
+                <br><br>
+                <div style="text-align:center;">
+                    --- 아이를 설정하세요 ---
+                </div>
+                <br>
+                
+                <form action="{% url 'parentMypage' %}" name="C1" method="post" class = "C1"> 
+                    {% csrf_token %}
+                    <div class="fieldlabel">아이1 : </div>
+                    
+                    {% for puser in parentUser.all %}
+                        {% if user.get_username == puser.UserID %}
+                            {{puser.UserChild1Name}}/{{puser.UserChild1ID}}
+                        {% endif %}
+                    {% endfor %}
+
+                    <span class="btnfield">
+                        <input type="submit" value="수정하기">
+                    </span>
+                </form>
+
+                <br><br>
+            </div>  
+            
+    </section>
+
+</body>
+
+
+
+{%endblock%}

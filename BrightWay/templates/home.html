@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+{% block contents %}
+{% load staticfiles %}
+
+<body>
+    <section class="home">
+        <div class="home_text">
+            <h1 class="home_title">BRIGHT WAY.</h1>
+            <h2 class="home_explain">It guides you through a bright way.</h2>
+            <br>
+            
+            {% if user.is_authenticated %}
+           
+            {% for puser in parentUser.all %}
+                {% if user.get_username == puser.UserID %}
+                    <div class="home_button">
+                        <a href="{%url 'map2'%}" class="btn-orange">CHECK WAY</a>
+                        <a href="{%url 'parentMypage'%}"class="btn-blue">MY PAGE</a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            {% for cuser in childUser.all %}
+            {% if user.get_username == cuser.UserID %}
+                <div class="home_button">
+                    <a href="{%url 'map'%}" class="btn-orange">CHECK WAY</a>
+                    <a href="{%url 'childMypage'%}"class="btn-blue">MY PAGE</a>
+                </div> 
+            {% endif %}
+            {% endfor %}
+            
+            
+            {% else %}
+            <div class="home_button">
+                <a href="{%url 'select2'%}" class="btn-orange">LOGIN</a>
+                <a href="{%url 'select'%}"class="btn-blue">SIGN UP</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="phone_image">
+            <img src = "{% static 'phone01.png' %}" alt="bright_way_preview">
+        </div>
+    </section>
+</body>
+
+{%endblock%}
